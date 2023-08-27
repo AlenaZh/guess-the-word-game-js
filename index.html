@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Угадай слово</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="game" class="game">
+      <h1 class="game__title">Угадай слово</h1>
+
+      <!--Экран "Хотите сыграть?"-->
+      <div id="greetingGameScreen" class="screen">
+        <p>Хотите сыграть?</p>
+        <div>
+          <button id="btnOpenGameYes" class="button" type="button">Да</button>
+          <button id="btnOpenGameNo" class="button button--cancel" type="button">Нет</button>
+        </div>
+      </div>
+
+      <!--Экран "Выберите уровень сложности"-->
+      <div id="selectLevelGameScreen" class="screen level">
+        <p>Выберите уровень сложности</p>
+        <ol id="levelList" class="level__list"></ol>
+      </div>
+
+      <!--Экран "Текущий раунд"-->
+      <div id="roundScreen" class="screen round">
+        <div class="round__info">
+          <p>Буквы: <span id="roundCountLetter" class="round__countLetter">0</span></p>
+          <p>Жизни: <span id="roundCountLife" class="round__countLife">0</span></p>
+        </div>
+        <table id="roundMask" class="round__mask">
+          <tr></tr>
+        </table>
+        <input id="fieldRound" class="round__field" type="text" placeholder="Cлово или буква" />
+        <button id="btnRound" class="button" type="button">Проверить</button>
+      </div>
+
+      <!--Экран "Результат раунда" (надписи "ПОБЕДА"/ "ПОРАЖЕНИЕ")-->
+      <div id="roundResult" class="round-result round-result--win"></div>
+
+      <!--Экран "Рейтинг"-->
+      <div id="statsScreen" class="screen stats">
+        <table class="stats__table">
+          <tr>
+            <th>Сложность</th>
+            <th>Победы</th>
+            <th>Поражения</th>
+          </tr>
+          <tr>
+            <td id="statsDifficulty"></td>
+            <td id="statsWin"></td>
+            <td id="statsDef"></td>
+          </tr>
+        </table>
+        <table id="statsTable" class="stats__table">
+          <tr>
+            <th>Слово</th>
+            <th>Угадал</th>
+            <th>Время</th>
+          </tr>
+        </table>
+        <button id="btnStats" class="button" type="button">OK</button>
+      </div>
+
+      <!--Экран "Хотите сыграть еще раз?"-->
+      <div id="newRoundScreen" class="screen">
+        <p>Хотите сыграть еще раз?</p>
+        <div>
+          <button id="btnNewRoundYes" class="button" type="button">Да</button>
+          <button id="btnNewRoundNo" class="button" type="button">Нет</button>
+        </div>
+      </div>
+
+      <!--Экран "Конец игры"-->
+      <div id="gameResultsScreen" class="screen result">
+        <p class="result__title">Конец игры</p>
+        <p id="gameResultText" class="result__text"></p>
+      </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/entities.js"></script>
+    <script src="js/game.js"></script>
+  </body>
+</html>

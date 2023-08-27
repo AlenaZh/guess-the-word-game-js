@@ -1,0 +1,264 @@
+body,
+html {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  font-size: 34px;
+  font-family: Verdana, Arial, sans-serif;
+  background-color: #ececec;
+}
+
+body {
+  position: relative;
+}
+
+p {
+  margin: 0;
+}
+
+.game {
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  box-sizing: border-box;
+  gap: 60px;
+  width: 100%;
+  height: 100%;
+  padding-top: 100px;
+}
+
+.game__title {
+  margin: 0;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 90px;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 6px 6px 0 #12c2a7;
+}
+
+.screen {
+  animation: fade-in 0.6s linear forwards;
+  display: none;
+  flex-flow: column;
+  align-items: center;
+  box-sizing: border-box;
+  min-width: 800px;
+  padding: 20px;
+  text-align: center;
+  gap: 40px;
+}
+
+.screen--shown {
+  display: flex;
+}
+
+.round__info {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-self: stretch;
+}
+
+.round__mask {
+  border-spacing: 15px;
+}
+
+.round__mask td {
+  width: 70px;
+  height: 70px;
+  border: 1px solid #bcbcbc;
+}
+
+.round__field {
+  padding: 10px;
+  font-size: inherit;
+  text-align: center;
+  position: relative;
+  border: 2px solid transparent;
+  border-radius: 20px;
+}
+
+.round__field--error {
+  animation: shake 0.6s;
+  border-color: #c2122f;
+}
+
+.round__countLife {
+  font-weight: bold;
+  color: #c2122f;
+}
+
+.round-result {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  display: none;
+  animation: fade-in-out 2.3s linear forwards;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+
+.round-result::before {
+  position: absolute;
+  content: "";
+  font-weight: bold;
+  font-size: 100px;
+  transform: translate(-50%, -50%);
+  animation: fade-in-out 2.3s linear forwards;
+  top: 50%;
+  left: 50%;
+}
+
+.round-result--win::before {
+  color: #12c2a7;
+  content: "Победа";
+}
+
+.round-result--def::before {
+  color: #c2122f;
+  content: "Поражение";
+}
+
+.round-result--shown {
+  display: block;
+}
+
+.stats__table {
+  width: 100%;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #bcbcbc;
+  border-radius: 20px;
+  font-size: 26px;
+}
+
+.stats__table th,
+.stats__table td {
+  width: 33.333333%;
+  padding: 10px 30px;
+}
+
+.stats__table th {
+  padding: 0 30px 15px;
+  border-bottom: 3px solid #000000;
+}
+
+.button {
+  min-width: 150px;
+  margin: 0 10px;
+  padding: 10px 40px;
+  font-size: 30px;
+  font-family: inherit;
+  background-color: #ffffff;  border: none;
+  border-radius: 40px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+  transition: color 0.3s, background-color 0.3s, box-shadow 0.3s;
+}
+
+.button:hover {
+  color: #ffffff;
+
+  background-color: #12c2a7;
+  box-shadow: 0 0 10px 1px rgba(18, 194, 168, 0.5);
+}
+
+.button--cancel:hover {
+  color: #ffffff;
+  background-color: #c2122f;
+  box-shadow: 0 0 10px 1px rgba(194, 18, 47, 0.5);
+}
+
+.level__list {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.level__list li {
+  padding: 20px 0;
+  font-weight: bold;
+  font-size: inherit;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: text-shadow 0.3s;
+}
+
+.level__list li:hover {
+  text-shadow: 1px 1px 0 #12c2a7, 2px 2px 0 #12c2a7, 3px 3px 0 #12c2a7;
+}
+
+.result__title {
+  font-size: 70px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-shadow: 3px 3px 0px #a29707, 4px 4px 0px #2f2d17, 5px 5px 0px #080801;
+  margin-bottom: 20px;
+  color: #d9cc1d;
+}
+
+.result__text {
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 30px;
+  width: 800px;
+  box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.3) inset;
+}
+
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translate(0%, 0%);
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translate(1%, 0%);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translate(-1%, 0%);
+  }
+}
